@@ -53,7 +53,7 @@ formatter
 Directly through docker.
 
 ```sh
-docker run -v `pwd`:/src ghcr.io/choval/formatter /src [6]
+docker run -v `pwd`:/src ghcr.io/choval/formatter /src
 ```
 
 ## License
