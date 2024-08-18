@@ -56,3 +56,6 @@ Directly through docker.
 docker run -v `pwd`:/src ghcr.io/choval/formatter /src [6]
 ```
 
+## License
+
+MIT, see [LICENSE](./LICENSE).
