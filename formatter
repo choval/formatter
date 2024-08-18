@@ -1,0 +1,5 @@
+#!/bin/sh
+OLDCONTEXT=`docker context show`
+docker context use default > /dev/null 2>&1
+docker run --rm -v `pwd`:/src ghcr.io/choval/formatter /src
+docker context use $OLDCONTEXT > /dev/null 2>&1
