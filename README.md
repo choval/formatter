@@ -48,7 +48,7 @@ current directory and format all files.
 
 
 ```sh
-formatter
+formatter [PATH]
 ```
 
 Directly through docker.
