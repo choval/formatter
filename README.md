@@ -19,9 +19,10 @@ docker
 ## Installation
 
 ```sh
-curl https://raw.githubusercontent.com/choval/formatter/master/formatter
-chmod +x formatter
-mv formatter ~/.local/bin/formatter
+curl -o ~/formatter https://raw.githubusercontent.com/choval/formatter/master/formatter
+chmod +x ~/formatter
+# Move to a bin path like ~/bin or ~/local/bin or ~/.local/bin
+mv ~/formatter ~/.local/bin/formatter
 ```
 
 ### Update
@@ -33,7 +34,7 @@ docker pull ghcr.io/choval/formatter
 ### Uninstall
 
 ```sh
-rm ~/.local/bin/formatter
+rm `which formatter`
 docker rmi ghcr.io/choval/formatter
 ```
 
@@ -59,3 +60,4 @@ docker run -v `pwd`:/src ghcr.io/choval/formatter /src
 ## License
 
 MIT, see [LICENSE](./LICENSE).
+
