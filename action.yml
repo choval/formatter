@@ -1,0 +1,13 @@
+# action.yml
+name: 'Formatter'
+description: 'Formats Python, PHP, JavaScript, CSS, JSON, Yaml'
+inputs:
+  target:
+    description: 'The path to format'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.target }}
+    

@@ -1,0 +1,39 @@
+name: formatter
+
+on:
+    pull_request:
+        types: [ready_for_review, opened, reopened, synchronize]
+
+    workflow_dispatch:
+        inputs:
+            git-ref:
+                description: Optional git ref (commit/branch/etc)
+                required: false
+
+jobs:
+  format:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.draft == false && github.event.action != 'closed'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fetches origin/main
+        run: |
+          git fetch origin main --depth=1
+      - name: Formatter
+        uses: choval/formatter
+        with:
+          target: .
+      - name: Check for modified files
+        id: git-check
+        run: echo "modified=$(if git diff --quiet; then echo false; else echo true; fi)" >> $GITHUB_ENV
+      - name: Push changes
+        if: env.modified == 'true'
+        run: |
+          git config --global user.name '${{ github.actor }}'
+          git config --global user.email '${{ github.actor }}@users.noreply.github.com'
+          git remote set-url origin 'https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}'
+          git add .
+          git commit -m "Auto code format"
+          git push
+          
+
