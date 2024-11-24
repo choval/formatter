@@ -20,7 +20,7 @@ jobs:
         run: |
           git fetch origin main --depth=1
       - name: Formatter
-        uses: choval/formatter
+        uses: ghcr.io/choval/formatter
         with:
           target: .
       - name: Check for modified files
