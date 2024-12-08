@@ -24,9 +24,10 @@ To run as a CLI
 ```sh
 curl -o ~/formatter_tmp https://raw.githubusercontent.com/choval/formatter/master/formatter
 chmod +x ~/formatter_tmp
-# Move to a bin path like ~/bin or ~/local/bin or ~/.local/bin
 mv ~/formatter_tmp ~/.local/bin/formatter
 ```
+
+Move to a bin path like ~/bin or ~/local/bin or ~/.local/bin
 
 To set as a git pre-commit hook
 
