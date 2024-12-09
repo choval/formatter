@@ -1,10 +1,4 @@
 #!/bin/sh
 export DOCKER_CLI_HINTS=false
-OLDCONTEXT=`docker context show`
-if [[ "$OLDCONTEXT" != "default" ]]; then
-    docker context use default > /dev/null 2>&1
-fi
+export DOCKER_CONTEXT=default
 docker run --rm -v `pwd`:/src ghcr.io/choval/formatter /src
-if [[ "$OLDCONTEXT" != "default" ]]; then
-    docker context use $OLDCONTEXT > /dev/null 2>&1
-fi
